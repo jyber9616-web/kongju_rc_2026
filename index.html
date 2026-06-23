@@ -1,4 +1,903 @@
-<h1>나는 주영찬입니다.</h1>
-git add index.html
-git commit -m "Improve personal homepage design"
-git push
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>yeongchan | RC Car Autonomous Driving</title>
+  <meta name="description" content="jyber9616-web의 RC카 자율주행 프로젝트 포트폴리오 페이지" />
+
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&display=swap");
+
+    :root {
+      --bg: #06111f;
+      --panel: rgba(8, 21, 38, 0.78);
+      --panel2: rgba(14, 31, 54, 0.86);
+      --line: rgba(148, 213, 255, 0.22);
+      --text: #eaf6ff;
+      --muted: #a9bdd1;
+      --blue: #32c7ff;
+      --cyan: #66f5ff;
+      --green: #35ff9f;
+      --yellow: #ffd166;
+      --pink: #ff5ca8;
+      --shadow: 0 24px 90px rgba(0, 0, 0, 0.45);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: "Noto Sans KR", system-ui, sans-serif;
+      background:
+        radial-gradient(circle at 16% 16%, rgba(50, 199, 255, 0.24), transparent 30%),
+        radial-gradient(circle at 82% 12%, rgba(255, 92, 168, 0.18), transparent 28%),
+        radial-gradient(circle at 55% 85%, rgba(53, 255, 159, 0.12), transparent 32%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(102, 245, 255, 0.055) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(102, 245, 255, 0.055) 1px, transparent 1px);
+      background-size: 42px 42px;
+      mask-image: linear-gradient(to bottom, #000, transparent 86%);
+      pointer-events: none;
+      z-index: -2;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background:
+        linear-gradient(115deg, transparent 0 38%, rgba(50, 199, 255, 0.08) 42%, transparent 47% 100%);
+      animation: scan 7s linear infinite;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    @keyframes scan {
+      from { transform: translateX(-80%); }
+      to { transform: translateX(80%); }
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .wrap {
+      width: min(1180px, 92%);
+      margin: 0 auto;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(18px);
+      background: rgba(6, 17, 31, 0.76);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav-inner {
+      height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      font-size: 22px;
+    }
+
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--blue), #265dff);
+      box-shadow: 0 0 28px rgba(50, 199, 255, 0.35);
+      font-family: "JetBrains Mono", monospace;
+      color: white;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .nav-links a {
+      transition: 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--cyan);
+      transform: translateY(-2px);
+    }
+
+    .hero {
+      min-height: calc(100vh - 74px);
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      align-items: center;
+      gap: 52px;
+      padding: 72px 0;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 15px;
+      margin-bottom: 22px;
+      border: 1px solid rgba(102, 245, 255, 0.35);
+      border-radius: 999px;
+      background: rgba(102, 245, 255, 0.08);
+      color: var(--cyan);
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    .pulse {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 16px var(--green);
+    }
+
+    h1 {
+      font-size: clamp(44px, 7vw, 88px);
+      line-height: 1.02;
+      letter-spacing: -0.08em;
+      margin-bottom: 24px;
+    }
+
+    .grad {
+      background: linear-gradient(90deg, var(--cyan), var(--blue), var(--green));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-text {
+      color: #d3e7f8;
+      max-width: 680px;
+      font-size: 19px;
+      margin-bottom: 32px;
+    }
+
+    .hero-text b {
+      color: white;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 34px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      min-height: 52px;
+      padding: 0 20px;
+      border-radius: 16px;
+      font-weight: 900;
+      transition: 0.25s ease;
+    }
+
+    .btn-main {
+      color: #03111d;
+      background: linear-gradient(135deg, var(--cyan), var(--green));
+      box-shadow: 0 16px 44px rgba(53, 255, 159, 0.23);
+    }
+
+    .btn-ghost {
+      background: rgba(8, 21, 38, 0.76);
+      border: 1px solid var(--line);
+      color: #d8efff;
+    }
+
+    .btn:hover {
+      transform: translateY(-4px);
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      max-width: 720px;
+    }
+
+    .stat {
+      padding: 18px;
+      border-radius: 22px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.22);
+    }
+
+    .stat strong {
+      display: block;
+      color: var(--cyan);
+      font-family: "JetBrains Mono", monospace;
+      font-size: 24px;
+      margin-bottom: 4px;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .dashboard {
+      position: relative;
+      min-height: 560px;
+    }
+
+    .orb {
+      position: absolute;
+      width: 260px;
+      height: 260px;
+      right: 18px;
+      top: 20px;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 32% 28%, #fff, transparent 7%),
+        radial-gradient(circle at 34% 34%, var(--cyan), transparent 12%),
+        radial-gradient(circle at 48% 48%, rgba(50, 199, 255, 0.28), transparent 36%),
+        radial-gradient(circle at 58% 60%, rgba(53, 255, 159, 0.22), transparent 44%),
+        rgba(10, 32, 56, 0.9);
+      border: 1px solid rgba(102, 245, 255, 0.34);
+      box-shadow: inset 0 0 55px rgba(102, 245, 255, 0.18), 0 0 80px rgba(50, 199, 255, 0.18);
+      animation: float 5s ease-in-out infinite;
+    }
+
+    .car {
+      position: absolute;
+      width: 370px;
+      left: 0;
+      top: 180px;
+      padding: 26px;
+      border-radius: 32px;
+      background: linear-gradient(180deg, rgba(14, 31, 54, 0.94), rgba(8, 21, 38, 0.82));
+      border: 1px solid rgba(102, 245, 255, 0.24);
+      box-shadow: var(--shadow);
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-14px); }
+    }
+
+    .car-visual {
+      height: 160px;
+      position: relative;
+      margin-bottom: 18px;
+      border-radius: 24px;
+      background:
+        linear-gradient(145deg, rgba(102, 245, 255, 0.12), transparent),
+        rgba(2, 6, 23, 0.72);
+      overflow: hidden;
+      border: 1px solid rgba(148, 213, 255, 0.15);
+    }
+
+    .road {
+      position: absolute;
+      left: -30px;
+      right: -30px;
+      bottom: 24px;
+      height: 58px;
+      border-top: 2px dashed rgba(234, 246, 255, 0.35);
+      transform: rotate(-7deg);
+    }
+
+    .rc {
+      position: absolute;
+      left: 58px;
+      bottom: 50px;
+      width: 190px;
+      height: 58px;
+      border-radius: 22px 42px 18px 18px;
+      background: linear-gradient(135deg, var(--blue), #1d4ed8);
+      box-shadow: 0 16px 28px rgba(0, 0, 0, 0.35);
+    }
+
+    .rc::before {
+      content: "";
+      position: absolute;
+      left: 42px;
+      top: -24px;
+      width: 82px;
+      height: 38px;
+      border-radius: 26px 28px 0 0;
+      background: rgba(102, 245, 255, 0.55);
+      border: 2px solid rgba(255, 255, 255, 0.32);
+    }
+
+    .wheel {
+      position: absolute;
+      bottom: -15px;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: #020617;
+      border: 6px solid #64748b;
+    }
+
+    .wheel.left { left: 28px; }
+    .wheel.right { right: 28px; }
+
+    .sensor {
+      position: absolute;
+      right: 34px;
+      top: 23px;
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      border: 2px solid rgba(102, 245, 255, 0.5);
+      animation: ping 1.8s linear infinite;
+    }
+
+    @keyframes ping {
+      from { transform: scale(0.4); opacity: 0.95; }
+      to { transform: scale(1.4); opacity: 0; }
+    }
+
+    .card-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .card-title h2 {
+      font-size: 24px;
+      letter-spacing: -0.04em;
+    }
+
+    .badge {
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(53, 255, 159, 0.12);
+      color: var(--green);
+      font-family: "JetBrains Mono", monospace;
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .terminal {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 13px;
+      color: #cfe9ff;
+      background: rgba(2, 6, 23, 0.72);
+      border: 1px solid rgba(148, 213, 255, 0.13);
+      border-radius: 18px;
+      padding: 16px;
+    }
+
+    .term-green { color: var(--green); }
+    .term-blue { color: var(--cyan); }
+
+    .mini-card {
+      position: absolute;
+      right: 0;
+      bottom: 42px;
+      width: 280px;
+      padding: 20px;
+      border-radius: 26px;
+      background: rgba(14, 31, 54, 0.86);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+
+    .mini-card h3 {
+      margin-bottom: 8px;
+      color: var(--yellow);
+      letter-spacing: -0.04em;
+    }
+
+    .mini-card p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    section {
+      padding: 78px 0;
+    }
+
+    .section-head {
+      margin-bottom: 30px;
+    }
+
+    .section-head .label {
+      color: var(--cyan);
+      font-family: "JetBrains Mono", monospace;
+      font-weight: 900;
+      margin-bottom: 6px;
+    }
+
+    .section-head h2 {
+      font-size: clamp(32px, 5vw, 54px);
+      letter-spacing: -0.07em;
+      line-height: 1.1;
+    }
+
+    .grid3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .info-card {
+      padding: 26px;
+      min-height: 250px;
+      border-radius: 28px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      transition: 0.25s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .info-card::after {
+      content: "";
+      position: absolute;
+      inset: auto -40px -60px auto;
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      background: rgba(50, 199, 255, 0.09);
+    }
+
+    .info-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(102, 245, 255, 0.5);
+    }
+
+    .emoji {
+      font-size: 34px;
+      margin-bottom: 16px;
+    }
+
+    .info-card h3 {
+      font-size: 22px;
+      margin-bottom: 12px;
+      letter-spacing: -0.04em;
+    }
+
+    .info-card p {
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .project-box {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 22px;
+    }
+
+    .project-main {
+      padding: 34px;
+      border-radius: 32px;
+      background:
+        linear-gradient(135deg, rgba(50, 199, 255, 0.22), rgba(53, 255, 159, 0.08)),
+        var(--panel2);
+      border: 1px solid rgba(102, 245, 255, 0.34);
+      box-shadow: var(--shadow);
+    }
+
+    .project-main h3 {
+      font-size: 38px;
+      letter-spacing: -0.06em;
+      margin-bottom: 12px;
+    }
+
+    .project-main p {
+      color: #d5ecff;
+      margin-bottom: 22px;
+      font-size: 17px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .tag {
+      padding: 8px 13px;
+      border-radius: 999px;
+      background: rgba(2, 6, 23, 0.5);
+      border: 1px solid rgba(148, 213, 255, 0.18);
+      color: #d9f4ff;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .steps {
+      display: grid;
+      gap: 16px;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 50px 1fr;
+      gap: 16px;
+      padding: 20px;
+      border-radius: 24px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+    }
+
+    .num {
+      width: 50px;
+      height: 50px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      background: rgba(102, 245, 255, 0.1);
+      color: var(--cyan);
+      font-family: "JetBrains Mono", monospace;
+      font-weight: 900;
+    }
+
+    .step h4 {
+      margin-bottom: 4px;
+      font-size: 18px;
+    }
+
+    .step p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .skill-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .skill {
+      padding: 12px 16px;
+      border-radius: 999px;
+      background: rgba(8, 21, 38, 0.82);
+      border: 1px solid var(--line);
+      color: #dcf5ff;
+      font-weight: 900;
+      transition: 0.2s;
+    }
+
+    .skill:hover {
+      transform: translateY(-4px);
+      border-color: var(--cyan);
+      color: var(--green);
+    }
+
+    .github-panel {
+      padding: 28px;
+      border-radius: 32px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .github-panel img {
+      width: 100%;
+      min-height: 190px;
+      object-fit: cover;
+      border-radius: 22px;
+      border: 1px solid rgba(148, 213, 255, 0.18);
+      background: rgba(2, 6, 23, 0.6);
+    }
+
+    .footer {
+      padding: 48px 0;
+      border-top: 1px solid var(--line);
+      text-align: center;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .footer b {
+      color: var(--cyan);
+    }
+
+    @media (max-width: 980px) {
+      .hero,
+      .project-box,
+      .github-panel {
+        grid-template-columns: 1fr;
+      }
+
+      .dashboard {
+        min-height: 500px;
+      }
+
+      .car {
+        left: 50%;
+        transform: translateX(-50%);
+        width: min(390px, 100%);
+      }
+
+      .mini-card {
+        right: 50%;
+        transform: translateX(50%);
+        bottom: 0;
+        width: min(330px, 100%);
+      }
+
+      .orb {
+        right: 50%;
+        transform: translateX(50%);
+      }
+
+      .grid3,
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-links {
+        display: none;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .hero {
+        padding-top: 46px;
+      }
+
+      .car {
+        top: 155px;
+        padding: 20px;
+      }
+
+      .rc {
+        transform: scale(0.86);
+        transform-origin: left bottom;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="#">
+        <span class="brand-mark">RC</span>
+        <span>yeongchan.dev</span>
+      </a>
+
+      <div class="nav-links">
+        <a href="#about">소개</a>
+        <a href="#project">프로젝트</a>
+        <a href="#skills">기술스택</a>
+        <a href="#github">GitHub</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="wrap">
+    <header class="hero">
+      <div class="hero-copy">
+        <div class="chip"><span class="pulse"></span> RC Car Autonomous Driving</div>
+
+        <h1>
+          자율주행을<br />
+          <span class="grad">직접 움직이는 코드</span>로<br />
+          배웁니다.
+        </h1>
+
+        <p class="hero-text">
+          안녕하세요. 저는 <b>yeongchan</b>입니다.
+          Python과 GitHub를 활용해 RC카 기반 자율주행 실습을 진행하며,
+          지능형 모빌리티와 차량 제어 기술을 공부하고 있습니다.
+        </p>
+
+        <div class="actions">
+          <a class="btn btn-main" href="https://github.com/jyber9616-web" target="_blank">GitHub 프로필 보기</a>
+          <a class="btn btn-ghost" href="https://github.com/jyber9616-web/kongju_rc_2026" target="_blank">프로젝트 저장소</a>
+        </div>
+
+        <div class="stats">
+          <div class="stat">
+            <strong>01</strong>
+            <span>RC카 자율주행 실습</span>
+          </div>
+          <div class="stat">
+            <strong>99.4%</strong>
+            <span>Python 중심 저장소</span>
+          </div>
+          <div class="stat">
+            <strong>Git</strong>
+            <span>커밋 기반 학습 기록</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="dashboard" aria-label="RC car visual dashboard">
+        <div class="orb"></div>
+
+        <div class="car">
+          <div class="car-visual">
+            <div class="sensor"></div>
+            <div class="road"></div>
+            <div class="rc">
+              <span class="wheel left"></span>
+              <span class="wheel right"></span>
+            </div>
+          </div>
+
+          <div class="card-title">
+            <h2>autocar lab</h2>
+            <span class="badge">running</span>
+          </div>
+
+          <div class="terminal">
+            <p><span class="term-green">student</span>@kongju:~$ python p01.py</p>
+            <p><span class="term-blue">></span> print · variable · input</p>
+            <p><span class="term-blue">></span> git add · commit · push</p>
+            <p><span class="term-blue">></span> ready for autonomous driving</p>
+          </div>
+        </div>
+
+        <div class="mini-card">
+          <h3>Project Focus</h3>
+          <p>개발 환경 구축 → Python 기초 → GitHub 기록 → RC카 자율주행 확장</p>
+        </div>
+      </div>
+    </header>
+
+    <section id="about">
+      <div class="section-head">
+        <p class="label">ABOUT</p>
+        <h2>지능형 모빌리티를 공부하는 학생</h2>
+      </div>
+
+      <div class="grid3">
+        <article class="info-card">
+          <div class="emoji">🚗</div>
+          <h3>Mobility</h3>
+          <p>차량이 움직이는 원리와 제어 흐름을 이해하고, 자율주행 시스템으로 연결하는 과정을 학습합니다.</p>
+        </article>
+
+        <article class="info-card">
+          <div class="emoji">🧠</div>
+          <h3>Autonomous Driving</h3>
+          <p>RC카를 활용해 자율주행의 기본 구조를 익히고 센서, 판단, 제어 흐름으로 확장하는 것을 목표로 합니다.</p>
+        </article>
+
+        <article class="info-card">
+          <div class="emoji">💻</div>
+          <h3>Development</h3>
+          <p>WSL, VS Code, GitHub 환경에서 Python 코드를 작성하고 커밋으로 학습 기록을 남깁니다.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="project">
+      <div class="section-head">
+        <p class="label">MAIN PROJECT</p>
+        <h2>kongju_rc_2026</h2>
+      </div>
+
+      <div class="project-box">
+        <div class="project-main">
+          <h3>RC카 활용 자율주행 특강</h3>
+          <p>
+            공주대 autocar 프로젝트 수업을 기반으로 WSL, VS Code, GitHub,
+            Python 기초 문법을 실습하고, 자율주행 프로젝트의 기본기를 쌓는 저장소입니다.
+          </p>
+
+          <div class="tags">
+            <span class="tag">Python</span>
+            <span class="tag">HTML</span>
+            <span class="tag">GitHub</span>
+            <span class="tag">WSL</span>
+            <span class="tag">VS Code</span>
+            <span class="tag">RC Car</span>
+            <span class="tag">Autonomous Driving</span>
+          </div>
+        </div>
+
+        <div class="steps">
+          <div class="step">
+            <div class="num">01</div>
+            <div>
+              <h4>환경 구축</h4>
+              <p>WSL과 VS Code를 설치하고 Python 실습 환경을 준비합니다.</p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="num">02</div>
+            <div>
+              <h4>Python 기초</h4>
+              <p>print, 변수, 자료형, 연산자, input, f-string, format을 실습합니다.</p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="num">03</div>
+            <div>
+              <h4>GitHub 기록</h4>
+              <p>실습 파일을 commit하고 push하면서 코드 관리 습관을 만듭니다.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="section-head">
+        <p class="label">SKILLS</p>
+        <h2>현재 다루는 기술</h2>
+      </div>
+
+      <div class="skill-cloud">
+        <span class="skill">Python</span>
+        <span class="skill">HTML</span>
+        <span class="skill">Git</span>
+        <span class="skill">GitHub</span>
+        <span class="skill">WSL</span>
+        <span class="skill">VS Code</span>
+        <span class="skill">RC Car</span>
+        <span class="skill">Autonomous Driving</span>
+        <span class="skill">Vehicle Control</span>
+        <span class="skill">Intelligent Mobility</span>
+      </div>
+    </section>
+
+    <section id="github">
+      <div class="section-head">
+        <p class="label">GITHUB</p>
+        <h2>활동 기록</h2>
+      </div>
+
+      <div class="github-panel">
+        <img src="https://github-readme-stats.vercel.app/api?username=jyber9616-web&show_icons=true&theme=tokyonight&hide_border=true" alt="GitHub stats" />
+        <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=jyber9616-web&layout=compact&theme=tokyonight&hide_border=true" alt="Top languages" />
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© 2026 <b>yeongchan</b> · GitHub ID <b>jyber9616-web</b></p>
+  </footer>
+</body>
+</html>
