@@ -22,4 +22,6 @@ rc카 활용 자율주행 특강
 3교시: github io 페이지 만들기
 4교시: if 조건문, 삼항 연산자, False로 변환되는 예
 5교시: list, listmethod, 바인딩
-6교시: listmethod(pop, remove, del)
+6교시: listmethod(pop, remove, del), pythonic
+7교시: 딕셔너리
+8교시: 딕셔너리를 활용한 webview
