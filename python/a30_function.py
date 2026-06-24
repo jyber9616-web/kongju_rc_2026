@@ -5,9 +5,10 @@ def print_hello(a : str):
     return "execution OK!"
     
 def main():
-    re = print_hello(3, "hi")
+    re, re1, _ = print_hello(3, 2)
     print(re)
-    
+    re = print_hello(3, 2)
+    print(*re)
 
 
 if __name__ == "__main__":
