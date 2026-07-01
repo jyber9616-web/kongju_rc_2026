@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Autocar Dashboard</title>
+    <link rel="stylesheet" href="./static/style.css">
+</head>
+
+<body>
+<header class="top-bar">
+    <div>
+        <h1>Autocar Dashboard</h1>
+        <p>pywebview Notebook Controller</p>
+    </div>
+    <div id="connectionStatus" class="status-badge disconnected">연결 확인 중</div>
+</header>
+
+<main class="layout">
+    <section class="left-panel">
+        <div class="card">
+            <h2>조이스틱 주행</h2>
+
+            <div id="joystick">
+                <div id="joystickKnob"></div>
+            </div>
+
+            <div id="joystickValue" class="value-text">x=0.00, y=0.00</div>
+
+            <div class="button-row">
+                <button class="danger" id="stopButton">긴급 정지</button>
+                <button id="neutralButton">중립</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>방향 버튼</h2>
+
+            <div class="direction-grid">
+                <div></div>
+                <button data-drive="forward">전진</button>
+                <div></div>
+
+                <button data-drive="left">좌</button>
+                <button data-drive="stop">정지</button>
+                <button data-drive="right">우</button>
+
+                <div></div>
+                <button data-drive="backward">후진</button>
+                <div></div>
+            </div>
+
+            <label class="range-label">
+                버튼 속도:
+                <span id="buttonSpeedValue">30</span>
+            </label>
+            <input id="buttonSpeed" type="range" min="0" max="60" value="30">
+        </div>
+
+        <div class="card">
+            <h2>카메라 Pan / Tilt</h2>
+
+            <label class="range-label">
+                Pan:
+                <span id="panValue">0</span>°
+            </label>
+            <input id="panSlider" type="range" min="-90" max="90" value="0">
+
+            <label class="range-label">
+                Tilt:
+                <span id="tiltValue">0</span>°
+            </label>
+            <input id="tiltSlider" type="range" min="-60" max="60" value="0">
+
+            <button id="cameraCenterButton">카메라 중앙</button>
+        </div>
+
+        <div class="card">
+            <h2>소리 / TTS</h2>
+
+            <div class="button-row">
+                <button id="toneButton">440Hz 톤</button>
+                <button id="warningToneButton">경고음</button>
+            </div>
+
+            <input id="ttsInput" class="text-input" type="text" value="hello autocar">
+            <button id="ttsButton">TTS 말하기</button>
+        </div>
+    </section>
+
+    <section class="right-panel">
+        <div class="card camera-card">
+            <div class="camera-header">
+                <h2>카메라 화면</h2>
+                <div class="button-row">
+                    <button id="cameraOnButton">카메라 켜기</button>
+                    <button id="cameraOffButton">카메라 끄기</button>
+                </div>
+            </div>
+
+            <div class="camera-box">
+                <img id="cameraImage" alt="camera stream">
+                <div id="cameraPlaceholder">카메라 화면 대기 중</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>현재 상태</h2>
+            <pre id="statusBox">상태 수신 대기 중...</pre>
+        </div>
+
+        <div class="card">
+            <h2>로그</h2>
+            <pre id="logBox">대시보드 시작</pre>
+        </div>
+    </section>
+</main>
+
+<script src="./static/config.js"></script>
+<script src="./static/main.js"></script>
+</body>
+</html>
