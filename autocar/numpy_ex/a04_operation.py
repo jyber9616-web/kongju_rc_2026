@@ -47,3 +47,6 @@ def main():
 
 if __name__ == "__main__":
     main()
+    
+    
+#zeros, linspace, arange, eye, ones, full, empty

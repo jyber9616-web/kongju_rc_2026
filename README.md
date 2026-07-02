@@ -37,3 +37,75 @@ rc카 활용 자율주행 특강
 
 
 ---
+
+2026-06-24  
+
+---
+
+1교시: while loop  
+2교시: 사전 평가 시험  
+3교시: 함수 작성, type hint, doc string, return  
+4교시: 인자, 포지셔널 인자, 가변 인자, 디폴트 인자  
+5교시: 회귀함수, 람다 함수, map, filter  
+6교시: file 읽기 쓰기, open, with open  
+7교시: generator, decorator, closure  
+8교시: time_decorator  
+
+---
+
+2026-06-26
+
+---
+
+1교시: sys, urllib, time  
+2교시: os, argv  
+3교시: frame, package  
+4교시: 가상환경 uv 설명 탁상시계 webview 구현  
+5교시: threading, asyncio 설명  
+6교시: flask server 구현 - click SSE 예제  
+7교시: 미니 프로젝트(webview UI 구현)  
+8교시: 미니 프로젝트(webview UI 구현)  
+
+---
+2026-06-29  
+
+---
+
+1교시: autocar 프로젝트 설명  
+2교시: autocar 의 기본 구조 서보 led, motor, sensor, camera, lidar, imu  
+3교시: RDIS ip 설정, wifi 네트워크   
+4교시: 차량 제어 - 모터, 서보  
+5교시: 채널 나누어서 출력하기  
+6교시: imshow 함수  
+7교시: 사진 저장  
+8교시: 카메라 설명, gstreamer  
+
+---
+
+2026-06-30  
+
+---
+
+1교시: OpenCV canny edge  
+2교시: haar cascade  
+3교시: alsa mixer 디바이스  
+4교시: 스피커 다루기 alsa mixer, speaker test  
+5교시: 블럭 코드, 논블럭 코드  
+6교시: Tone class 설계  
+7교시: 실습 - 멜로디 연주  
+8교시: Record 설명  
+
+---
+
+2026-07-01
+
+---
+
+1교시: AudioPlay class, AudioRecord class  
+2교시: TTS 설명, gTTS 설치 및 실습  
+3교시: espeak 설치 및 실습, piper 설치 및 실습  
+4교시: stt 설명, whisper 설치 및 실습  
+5교시: numpy 기초, 초기화 함수(zeros, ones, full, eye, arange, linspace)  
+6교시: broadcast, 연산자, reshape, transpose, flatten  
+7교시: 미니 프로젝트 - Autocar제어 api / webview 대시 보드 구현  
+8교시: 미니 프로젝트 - Autocar제어 api / webview 대시 보드 구현  
